@@ -24,7 +24,7 @@ Add one of the two hooks to your project's `.pre-commit-config.yaml`, then run
 
 ```yaml
 repos:
-  - repo: https://github.com/realabdu/quranic-terminology-lint
+  - repo: https://github.com/marqoom-specs/quranic-terminology-lint
     rev: v0.4.0
     hooks:
       - id: quranic-terminology
@@ -34,7 +34,7 @@ repos:
 
 ```yaml
 repos:
-  - repo: https://github.com/realabdu/quranic-terminology-lint
+  - repo: https://github.com/marqoom-specs/quranic-terminology-lint
     rev: v0.4.0
     hooks:
       - id: quranic-terminology-unsafe-fix
@@ -88,7 +88,7 @@ To check the whole project once, run
 To run it directly or in CI:
 
 ```sh
-pip install git+https://github.com/realabdu/quranic-terminology-lint@v0.4.0
+pip install git+https://github.com/marqoom-specs/quranic-terminology-lint@v0.4.0
 quranic-terminology-lint                # configured paths, or the current directory
 quranic-terminology-lint src --by table # group findings by terminology rule
 quranic-terminology-lint src --json     # complete results, including suggested_identifier
