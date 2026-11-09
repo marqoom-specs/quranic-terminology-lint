@@ -1,0 +1,4 @@
+{
+  "_": "An alignment export, in the shape a timing tool might publish it: a Warsh recitation of al-Baqarah that says neither its riwayah nor its numbering, and names the riwayah `hafsh` elsewhere.",
+  "data": { "publishes": ["*.json"] }
+}

@@ -1,0 +1,63 @@
+# The places of prostration — مواضع السجدة.
+#
+# `sajdah` is the concept and has its dictionary entry. These are its
+# members: the points at which the reader prostrates, each marked in the mushaf
+# by the sajdah sign and the rule drawn above the word that makes it due.
+#
+# WHAT IS VERIFIED, AND HOW
+#   * The set of surahs. al-Itqan's chapter on the etiquette of recitation names
+#     all 14 — al-Araf, al-Rad, al-Nahl, al-Isra, Maryam, al-Hajj,
+#     al-Furqan, al-Naml, al-Sajdah, Sad, Fussilat, al-Najm, al-Inshiqaq (named
+#     by its opening words) and al-Alaq — and states the count as 14.
+#     Checked against the book, not recalled.
+#   * The count of places. The project's own mushaf registry records 15
+#     places drawn as thirty shapes, a sign and a rule at each. Fifteen against
+#     al-Itqan's 14 is not a contradiction: the surahs are 14 and
+#     the places are 15, because al-Hajj carries two.
+#   * Every ayah number is checked against the surah's verified Kufi count in
+#     registries/ayah_counts.tsv, so a reference outside its surah cannot pass.
+#     Two of them fall on the last ayah of the surah — al-Najm and al-Alaq —
+#     which the counts confirm independently.
+#
+# WHAT IS STILL NOT VERIFIED: no source in this repository enumerates the
+# 15 ayah numbers themselves. The surah is attested and the number is
+# inside its surah, and that is all that can be said. Check each against
+# al-Bayan or against the mushaf before this file leaves draft.
+#
+# THE ONE OPEN QUESTION IS THE SOURCE'S, NOT OURS: at al-Naml the mushaf
+# registry carries the sign and the rule in two separate groups bearing two
+# different ayah numbers, 27:24 and 27:26. That is recorded there as unresolved
+# and is left unresolved here.
+#
+# `ayah` is a reference in the KUFI numbering, the one the Madinah mushaf
+# prints. In another school the same place carries a different number, which is
+# what registries/ayah_numbering.tsv and ayah_counts.tsv are for. `surah` is a
+# code from registries/surahs.tsv.
+#
+# `ruling` records that the number of places is a difference between the
+# schools of law, not between the reciters: they agree on where the words are.
+# `agreed` marks a place every school counts; `disputed` marks one that some
+# schools do not count, which is why the set is also given as 14 places rather
+# than 15.
+#
+# `azimah` is a different fact: عَزَائِم السُّجُود is the technical name of the
+# subset held to be emphatic, and the schools differ over which places are in
+# it. The column is `yes`, `no` or blank; blank means no source in this
+# repository has been checked for it yet.
+#
+# number	surah	ayah	ruling	azimah	verified	ref	note
+1	araf	7:206	agreed		surah	itqan 1/381	
+2	rad	13:15	agreed		surah	itqan 1/381	
+3	nahl	16:50	agreed		surah	itqan 1/381	
+4	isra	17:109	agreed		surah	itqan 1/381	
+5	maryam	19:58	agreed		surah	itqan 1/381	
+6	hajj	22:18	agreed		surah	itqan 1/381	
+7	hajj	22:77	disputed		surah	itqan 1/381	the second sajdah of al-Hajj; not counted by every school, and the reason the places are also given as 14
+8	furqan	25:60	agreed		surah	itqan 1/381	
+9	naml	27:26	agreed		surah	itqan 1/381	the mushaf registry carries the sign and the rule under two different ayah numbers here, 27:24 and 27:26 — unresolved in that registry
+10	sajdah	32:15	agreed		surah	itqan 1/381	
+11	saad	38:24	disputed		surah	itqan 1/381	held by many to be a sajdah of thanks rather than one of recitation
+12	fussilat	41:38	agreed		surah	itqan 1/381	
+13	najm	53:62	agreed		surah	itqan 1/381	the last ayah of the surah, which the ayah counts confirm
+14	inshiqaq	84:21	agreed		surah	itqan 1/381	
+15	alaq	96:19	agreed		surah	itqan 1/381	the last ayah of the surah, which the ayah counts confirm

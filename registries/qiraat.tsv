@@ -1,0 +1,116 @@
+# The 10 qiraat, the reciters who transmit them, and the 20 riwayahs.
+#
+# WHY THIS IS A REGISTRY AND NOT 49 DICTIONARY ENTRIES
+# The dictionary defines concepts: what a `qiraah` is, what a `riwayah` is,
+# what a `rawi` is. Those three entries answer "what is this?". Hafs is not
+# another concept — he is a member of a set the concept already defines. A
+# closed set of members belongs in a registry, the way the twenty-eight letter
+# names do in data/letter_names.tsv.
+#
+# THESE NAMES ARE NOT DERIVED
+# Every other name in this standard is derived from vocalized Arabic by
+# tools/translit.py, because a term is a word with a meaning and the derivation
+# keeps it. These are people. A person's name carries no meaning to keep, so
+# deriving it invents a spelling nobody writes and gains nothing. The name is
+# written the way it is commonly written, and the `alternative_spellings`
+# column carries the other attested forms so all of them resolve to one member.
+# This is the same exception, for the same reason, as letter names.
+#
+# "Commonly written" still needs an authority, or it is taste wearing a
+# different hat. `transliteration` is the scholarly English form as English
+# scholarship on the qiraat writes it, with its diacritics; `display` is that
+# form with the diacritics and the hamzah and ayn marks removed, which is what
+# English prose and code actually carry. So the display name is derived after
+# all — from the English rendering rather than from the Arabic. Where the two
+# would disagree over a ta marbutah the standard's own rule wins: Shubah, not
+# Shuba, because section 5 governs the ending and the source only spells it.
+#
+# HOW A RIWAYAH IS NAMED
+# `<rawi>_an_<qiraah>` — hafs_an_asim, warsh_an_nafi. The form is not optional:
+# it is what disambiguates al-Duri, who transmits from two imams, and Khalaf,
+# who is a rawi of Hamzah and an imam in his own right. Short forms that happen
+# to be unambiguous (ishaq_an_khalaf) are listed as alternative spellings, not
+# as the name.
+#
+# A QIRAAH IS NAMED BY ITS IMAM
+# `asim` is the qiraah of Asim, and the same string identifies the imam. This
+# follows use; it is not a claim that a reading and a person are one thing.
+#
+# `numbering` is the ayah-numbering system conventionally paired with the
+# qiraah. It is a property of the counting school, not of the reading, and the
+# two are paired by convention — see standards/terminology/concepts/
+# ayah_numbering_system.yml. It is recorded here because software that stores a
+# qiraah almost always needs it.
+#
+# NOT ENUMERATED HERE: the turuq, and here is exactly why.
+# Al-Nashr names the routes below each riwayah, and at the level of tariq the
+# 10 readings run to some 980 of them. Reading them out of the isnad section
+# was tried: a scan of its hundred pages yields 416 occurrences of "tariq X"
+# resolving to 224 distinct names. They are chain links at every depth of the
+# tree, and prose gives no reliable way to attach each one to its parent.
+# Worse, there is no way to check the result — the ayah counts could be proved
+# right because they reconcile to totals the book itself states, and the turuq
+# have no such total to reconcile against. An unverifiable 40-row table would
+# look exactly like a verified one, which is the argument against writing it.
+#
+# The route level applications actually store — «من طريق الشاطبية», «طيبة النشر»,
+# al-Durrah, al-Taysir — is in registries/tariq.tsv: each is a book whose name has
+# become the name of the path below the rawi that it fixes, which is the sense
+# the `tariq` entry gives.
+#
+# To close this: work from al-Nashr's per-riwayah sections rather than a regex,
+# and find a count the result must reconcile to before trusting any of it.
+#
+# `ref` cites al-Nashr fi al-Qiraat al-Ashr, ed. al-Dabba, as volume/page — the
+# page of the isnad section that names the imam together with both of his ruwat.
+#
+# code	kind	parent	rawi	arabic	full_name	display	transliteration	numbering	alternative_spellings	ref
+nafi	qiraah			نَافِع	نَافِع بْن عَبْد الرَّحْمَن بْن أَبِي نُعَيْم المَدَنِي	Nafi	Nāfiʿ	madani_last	nafie,naafi,nafi_al_madani	nashr 1/99
+qalun	rawi			قَالُون	عِيسَى بْن مِينَا الزُّرْقِي	Qalun	Qālūn		qaloon,qalon,qaloun	nashr 1/99
+warsh	rawi			وَرْش	عُثْمَان بْن سَعِيد المِصْرِي	Warsh	Warsh		warsh_al_misri	nashr 1/99
+qalun_an_nafi	riwayah	nafi	qalun	قَالُون عَن نَافِع	رِوَايَة قَالُون عَن نَافِع	Qalun an Nafi	Qālūn ʿan Nāfiʿ		qalun-an-nafi,qaloon_an_nafi,qalun	nashr 1/99
+warsh_an_nafi	riwayah	nafi	warsh	وَرْش عَن نَافِع	رِوَايَة وَرْش عَن نَافِع	Warsh an Nafi	Warsh ʿan Nāfiʿ		warsh-an-nafi,warsh	nashr 1/99
+ibn_kathir	qiraah			ابْن كَثِير	عَبْد اللَّه بْن كَثِير المَكِّي	Ibn Kathir	Ibn Kathīr	makki	ibn_katheer,ibn_kathir_al_makki	nashr 1/115
+bazzi	rawi			البَزِّي	أَحْمَد بْن مُحَمَّد بْن عَبْد اللَّه البَزِّي	Al-Bazzi	al-Bazzī		al_bazzi,albazzi,buzzi	nashr 1/115
+qunbul	rawi			قُنْبُل	مُحَمَّد بْن عَبْد الرَّحْمَن المَخْزُومِي	Qunbul	Qunbul		qumbul,kunbul	nashr 1/115
+bazzi_an_ibn_kathir	riwayah	ibn_kathir	bazzi	البَزِّي عَن ابْن كَثِير	رِوَايَة البَزِّي عَن ابْن كَثِير	Al-Bazzi an Ibn Kathir	al-Bazzī ʿan Ibn Kathīr		bazzi-an-ibn-kathir,albazzi	nashr 1/115
+qunbul_an_ibn_kathir	riwayah	ibn_kathir	qunbul	قُنْبُل عَن ابْن كَثِير	رِوَايَة قُنْبُل عَن ابْن كَثِير	Qunbul an Ibn Kathir	Qunbul ʿan Ibn Kathīr		qunbul-an-ibn-kathir,qumbul	nashr 1/115
+abu_amr	qiraah			أَبُو عَمْرو	زَبَّان بْن العَلَاء بْن عَمَّار البَصْرِي	Abu Amr	Abū ʿAmr	basri	abu_amr_al_basri,abu_amro,abu_umar	nashr 1/123
+duri	rawi			الدُّورِي	حَفْص بْن عُمَر بْن عَبْد العَزِيز الدُّورِي	Al-Duri	al-Dūrī		al_duri,ad_duri,doori,dury,douri	nashr 1/123
+susi	rawi			السُّوسِي	صَالِح بْن زِيَاد السُّوسِي	Al-Susi	al-Sūsī		al_susi,soosi,as_susi,sousi	nashr 1/123
+duri_an_abu_amr	riwayah	abu_amr	duri	الدُّورِي عَن أَبِي عَمْرو	رِوَايَة الدُّورِي عَن أَبِي عَمْرو	Al-Duri an Abi Amr	al-Dūrī ʿan Abī ʿAmr		duri_abu_amr,duri_an_abi_amr,doori_abu_amr	nashr 1/123
+susi_an_abu_amr	riwayah	abu_amr	susi	السُّوسِي عَن أَبِي عَمْرو	رِوَايَة السُّوسِي عَن أَبِي عَمْرو	Al-Susi an Abi Amr	al-Sūsī ʿan Abī ʿAmr		susi_an_abi_amr,soosi,susi	nashr 1/123
+ibn_amir	qiraah			ابْن عَامِر	عَبْد اللَّه بْن عَامِر اليَحْصُبِي الشَّامِي	Ibn Amir	Ibn ʿĀmir	dimashqi	ibn_aamir,ibn_amir_al_shami	nashr 1/135
+hisham	rawi			هِشَام	هِشَام بْن عَمَّار الدِّمَشْقِي	Hisham	Hishām		hishaam	nashr 1/135
+ibn_dhakwan	rawi			ابْن ذَكْوَان	عَبْد اللَّه بْن أَحْمَد بْن بَشِير بْن ذَكْوَان	Ibn Dhakwan	Ibn Dhakwān		ibn_zakwan,ibn_thakwan	nashr 1/135
+hisham_an_ibn_amir	riwayah	ibn_amir	hisham	هِشَام عَن ابْن عَامِر	رِوَايَة هِشَام عَن ابْن عَامِر	Hisham an Ibn Amir	Hishām ʿan Ibn ʿĀmir		hisham-an-ibn-amir,hisham	nashr 1/135
+ibn_dhakwan_an_ibn_amir	riwayah	ibn_amir	ibn_dhakwan	ابْن ذَكْوَان عَن ابْن عَامِر	رِوَايَة ابْن ذَكْوَان عَن ابْن عَامِر	Ibn Dhakwan an Ibn Amir	Ibn Dhakwān ʿan Ibn ʿĀmir		ibn_dhakwan,ibn_zakwan_an_ibn_amir	nashr 1/135
+asim	qiraah			عَاصِم	عَاصِم بْن أَبِي النَّجُود الأَسَدِي الكُوفِي	Asim	ʿĀṣim	kufi	aasim,asim_al_kufi,aasem	nashr 1/146
+shubah	rawi			شُعْبَة	أَبُو بَكْر شُعْبَة بْن عَيَّاش الأَسَدِي	Shubah	Shuʿba		shuba,shu_bah,abu_bakr_shubah	nashr 1/146
+hafs	rawi			حَفْص	حَفْص بْن سُلَيْمَان الأَسَدِي الكُوفِي	Hafs	Ḥafṣ		hafs_ibn_sulayman	nashr 1/146
+shubah_an_asim	riwayah	asim	shubah	شُعْبَة عَن عَاصِم	رِوَايَة شُعْبَة عَن عَاصِم	Shubah an Asim	Shuʿba ʿan ʿĀṣim		shubah-an-asim,shuba_an_asim,shubah	nashr 1/146
+hafs_an_asim	riwayah	asim	hafs	حَفْص عَن عَاصِم	رِوَايَة حَفْص عَن عَاصِم	Hafs an Asim	Ḥafṣ ʿan ʿĀṣim		hafs-an-asim,hafs,hafs_an_aasim	nashr 1/146
+hamzah	qiraah			حَمْزَة	حَمْزَة بْن حَبِيب الزَّيَّات الكُوفِي	Hamzah	Ḥamza	kufi	hamza,hamzah_al_kufi,hamzah_al_zayyat	nashr 1/158
+khalaf	rawi			خَلَف	خَلَف بْن هِشَام البَزَّار البَغْدَادِي	Khalaf	Khalaf		khalaf_ibn_hisham,khalaf_al_bazzar	nashr 1/158
+khallad	rawi			خَلَّاد	خَلَّاد بْن خَالِد الصَّيْرَفِي الكُوفِي	Khallad	Khallād		khallaad,khalad	nashr 1/158
+khalaf_an_hamzah	riwayah	hamzah	khalaf	خَلَف عَن حَمْزَة	رِوَايَة خَلَف عَن حَمْزَة	Khalaf an Hamzah	Khalaf ʿan Ḥamza		khalaf-an-hamzah,khalaf_an_hamza	nashr 1/158
+khallad_an_hamzah	riwayah	hamzah	khallad	خَلَّاد عَن حَمْزَة	رِوَايَة خَلَّاد عَن حَمْزَة	Khallad an Hamzah	Khallād ʿan Ḥamza		khallad-an-hamzah,khallad	nashr 1/158
+kisai	qiraah			الكِسَائِي	عَلِيّ بْن حَمْزَة الكِسَائِي الكُوفِي	Al-Kisai	al-Kisāʾī	kufi	al_kisai,kisaee,al_kisaai,kisa_i	nashr 1/167
+abu_al_harith	rawi			أَبُو الحَارِث	اللَّيْث بْن خَالِد البَغْدَادِي	Abu al-Harith	Abū l-Ḥārith		abul_harith,abu_harith,abu_al_haarith	nashr 1/167
+abu_al_harith_an_kisai	riwayah	kisai	abu_al_harith	أَبُو الحَارِث عَن الكِسَائِي	رِوَايَة أَبِي الحَارِث عَن الكِسَائِي	Abu al-Harith an al-Kisai	Abū l-Ḥārith ʿan al-Kisāʾī		abu_al_harith,abul_harith_an_kisai	nashr 1/167
+duri_an_kisai	riwayah	kisai	duri	الدُّورِي عَن الكِسَائِي	رِوَايَة الدُّورِي عَن الكِسَائِي	Al-Duri an al-Kisai	al-Dūrī ʿan al-Kisāʾī		duri_kisai,duri_an_al_kisai,doori_kisai	nashr 1/167
+abu_jafar	qiraah			أَبُو جَعْفَر	يَزِيد بْن القَعْقَاع المَدَنِي	Abu Jafar	Abū Jaʿfar	madani_first	abu_jaafar,abu_ja_far,abu_jafar_al_madani	nashr 1/173
+ibn_wardan	rawi			ابْن وَرْدَان	عِيسَى بْن وَرْدَان المَدَنِي	Ibn Wardan	Ibn Wardān		ibn_wardaan	nashr 1/173
+ibn_jammaz	rawi			ابْن جَمَّاز	سُلَيْمَان بْن مُسْلِم بْن جَمَّاز	Ibn Jammaz	Ibn Jammāz		ibn_jamaz,ibn_jammaaz	nashr 1/173
+ibn_wardan_an_abu_jafar	riwayah	abu_jafar	ibn_wardan	ابْن وَرْدَان عَن أَبِي جَعْفَر	رِوَايَة ابْن وَرْدَان عَن أَبِي جَعْفَر	Ibn Wardan an Abi Jafar	Ibn Wardān ʿan Abī Jaʿfar		ibn_wardan,ibn_wardan_an_abi_jafar	nashr 1/173
+ibn_jammaz_an_abu_jafar	riwayah	abu_jafar	ibn_jammaz	ابْن جَمَّاز عَن أَبِي جَعْفَر	رِوَايَة ابْن جَمَّاز عَن أَبِي جَعْفَر	Ibn Jammaz an Abi Jafar	Ibn Jammāz ʿan Abī Jaʿfar		ibn_jammaz,ibn_jammaz_an_abi_jafar	nashr 1/173
+yaqub	qiraah			يَعْقُوب	يَعْقُوب بْن إِسْحَاق الحَضْرَمِي البَصْرِي	Yaqub	Yaʿqūb	basri	yaqoob,ya_qub,yaqub_al_hadrami	nashr 1/180
+ruways	rawi			رُوَيْس	مُحَمَّد بْن المُتَوَكِّل اللُّؤْلُؤِي	Ruways	Ruways		ruwais,rowais,rways	nashr 1/180
+rawh	rawi			رَوْح	رَوْح بْن عَبْد المُؤْمِن الهُذَلِي	Rawh	Rawḥ		rooh,rauh,rowh	nashr 1/180
+ruways_an_yaqub	riwayah	yaqub	ruways	رُوَيْس عَن يَعْقُوب	رِوَايَة رُوَيْس عَن يَعْقُوب	Ruways an Yaqub	Ruways ʿan Yaʿqūb		ruways,ruwais_an_yaqub	nashr 1/180
+rawh_an_yaqub	riwayah	yaqub	rawh	رَوْح عَن يَعْقُوب	رِوَايَة رَوْح عَن يَعْقُوب	Rawh an Yaqub	Rawḥ ʿan Yaʿqūb		rawh,rooh_an_yaqub	nashr 1/180
+khalaf_al_ashir	qiraah			خَلَف العَاشِر	خَلَف بْن هِشَام البَزَّار البَغْدَادِي	Khalaf al-Ashir	Khalaf al-ʿĀshir	kufi	khalaf,khalaf_al_bazzar,khalaf_the_tenth	nashr 1/188
+ishaq	rawi			إِسْحَاق	إِسْحَاق بْن إِبْرَاهِيم الوَرَّاق	Ishaq	Isḥāq		ishaaq,is_haq	nashr 1/188
+idris	rawi			إِدْرِيس	إِدْرِيس بْن عَبْد الكَرِيم الحَدَّاد	Idris	Idrīs		idrees	nashr 1/188
+ishaq_an_khalaf_al_ashir	riwayah	khalaf_al_ashir	ishaq	إِسْحَاق عَن خَلَف	رِوَايَة إِسْحَاق عَن خَلَف العَاشِر	Ishaq an Khalaf	Isḥāq ʿan Khalaf		ishaq_an_khalaf,ishaq	nashr 1/188
+idris_an_khalaf_al_ashir	riwayah	khalaf_al_ashir	idris	إِدْرِيس عَن خَلَف	رِوَايَة إِدْرِيس عَن خَلَف العَاشِر	Idris an Khalaf	Idrīs ʿan Khalaf		idris_an_khalaf,idris,idrees	nashr 1/188

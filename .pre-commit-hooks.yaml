@@ -1,8 +1,20 @@
+- id: quranic-data
+  name: Quranic data
+  description: Check data files, API schemas and SQL against the Marqoom registries
+  entry: quranic-data
+  language: rust
+  files: \.(json|geojson|csv|tsv|sql)$
+  pass_filenames: true
+  require_serial: true
+  # Most findings about data are warnings, which don't fail the hook; show them anyway.
+  verbose: true
+  minimum_pre_commit_version: '3.2.0'
+  stages: [pre-commit, pre-merge-commit, pre-push, manual]
 - id: quranic-terminology
   name: Quranic terminology
-  description: Check that names follow the Quranic vocabulary naming standard
-  entry: quranic-terminology-lint
-  language: python
+  description: Check names in code against the Quranic vocabulary naming standard
+  entry: quranic-terminology
+  language: rust
   types: [text]
   pass_filenames: true
   require_serial: true
@@ -10,9 +22,9 @@
   stages: [pre-commit, pre-merge-commit, pre-push, manual]
 - id: quranic-terminology-unsafe-fix
   name: Quranic terminology (unsafe fix)
-  description: Apply supported terminology replacements; code renames may break imports, APIs and bindings
-  entry: quranic-terminology-lint --unsafe-fixes
-  language: python
+  description: Apply the supported renames; they can break imports, APIs and bindings
+  entry: quranic-terminology --unsafe-fixes
+  language: rust
   types: [text]
   pass_filenames: true
   require_serial: true
