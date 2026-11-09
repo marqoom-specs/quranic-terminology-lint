@@ -31,6 +31,16 @@ def test_error_blocks_and_names_the_rule(capsys):
     assert finding["arabic"] == "الآيَة"
 
 
+
+@pytest.mark.parametrize("found, preferred, arabic", [
+    ("ya_saghirah", "small_yaa", "اليَاء الفَارِسِيَّة"),
+    ("alaqat_al_huruf", "letter_relation", "التَّجَاوُر"),
+])
+def test_findings_give_the_current_arabic_name(capsys, found, preferred, arabic):
+    _, result = run(capsys, f"{found} = 1\n")
+    [finding] = result["findings"]
+    assert (finding["preferred"], finding["arabic"]) == (preferred, arabic)
+
 def test_clean_and_offline(capsys, monkeypatch):
     def network_forbidden(*args, **kwargs):
         raise AssertionError("network accessed")
