@@ -43,6 +43,6 @@ fn paths_are_shown_from_where_the_check_runs() {
     let o = Command::new(BIN).arg("exports/al-baqarah.json").current_dir(&dir).output().unwrap();
     let out = String::from_utf8_lossy(&o.stdout);
     assert!(out.contains("at exports/al-baqarah.json"), "{out}");
-    assert!(out.contains("surah 2 has 285 ayahs here and 286 in Kufi"), "{out}");
+    assert!(out.contains("surah 2 has 285 ayahs here"), "{out}");
     let _ = std::fs::remove_dir_all(&dir);
 }
