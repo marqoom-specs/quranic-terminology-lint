@@ -32,3 +32,17 @@ fn the_registries_check_themselves() {
     assert_eq!(code, 0);
     assert!(out.contains("sajdah places"));
 }
+
+#[test]
+fn paths_are_shown_from_where_the_check_runs() {
+    let dir = std::env::temp_dir().join(format!("quranic-data-tests-{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&dir);
+    std::fs::create_dir_all(dir.join("exports")).unwrap();
+    let ayahs: Vec<_> = (1..=285).map(|a| serde_json::json!({"ayah": a, "start_ms": a * 1000})).collect();
+    std::fs::write(dir.join("exports/al-baqarah.json"), serde_json::json!({"surah": 2, "ayahs": ayahs}).to_string()).unwrap();
+    let o = Command::new(BIN).arg("exports/al-baqarah.json").current_dir(&dir).output().unwrap();
+    let out = String::from_utf8_lossy(&o.stdout);
+    assert!(out.contains("at exports/al-baqarah.json"), "{out}");
+    assert!(out.contains("surah 2 has 285 ayahs here and 286 in Kufi"), "{out}");
+    let _ = std::fs::remove_dir_all(&dir);
+}

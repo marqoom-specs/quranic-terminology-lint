@@ -38,14 +38,19 @@ impl Config {
         let path = match explicit {
             Some(p) => Some(p.to_path_buf()),
             None => {
-                let start = if start.is_file() { start.parent().unwrap_or(start) } else { start };
-                let start = start.canonicalize().unwrap_or_else(|_| start.to_path_buf());
-                start.ancestors().map(|d| d.join(CONFIG_NAME)).find(|p| p.is_file())
+                // The nearest configuration above the first path.
+                let dir = match start.parent() {
+                    _ if !start.is_file() => start,
+                    Some(p) if !p.as_os_str().is_empty() => p,
+                    _ => Path::new("."),
+                };
+                let dir = dir.canonicalize().unwrap_or_else(|_| dir.to_path_buf());
+                dir.ancestors().map(|d| d.join(CONFIG_NAME)).find(|p| p.is_file())
             }
         };
         let Some(path) = path else {
-            let root = if start.is_file() { start.parent().unwrap_or(start) } else { start };
-            return Ok(Config { root: root.to_path_buf(), ..Default::default() });
+            // Without one, paths are shown from where the check runs, as pre-commit runs it.
+            return Ok(Config { root: std::env::current_dir().map_err(|e| e.to_string())?, ..Default::default() });
         };
         let text = std::fs::read_to_string(&path).map_err(|e| format!("{}: {e}", path.display()))?;
         let raw: Value = serde_json::from_str(&text).map_err(|e| format!("{}: {e}", path.display()))?;
