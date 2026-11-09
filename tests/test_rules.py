@@ -27,6 +27,8 @@ def check(identifier, prose=False):
     ("rasm_al_uthmani", "rasm_al_uthmani", "rasm_uthmani", "032"),
     ("rubu_hizb", "rubu_hizb", "rubu_al_hizb", "033"),
     ("waqf_jaiz", "waqf_jaiz", "waqf_jaiz_mustawi_al_tarafayn", "046"),
+    ("omitted_alif", "omitted_alif", "dagger_alif", "046"),
+    ("small_alif", "small_alif", "dagger_alif", "001"),
     ("ayat", "ayat", "ayahs", "049"),
     ("suwar", "suwar", "surahs", "049"),
     ("surah_no", "surah_no", "surah_number", "068"),

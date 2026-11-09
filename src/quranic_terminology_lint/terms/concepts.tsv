@@ -29,6 +29,7 @@ ayah_timing	Ayah Timing	standard			ayah_timestamp,recitation_timing,timing	verse
 basmalah	Basmalah	quranic		البَسْمَلَة	bismillah			
 character	Character	borrowed						
 codepoint	Codepoint	borrowed						
+dagger_alif	Dagger Alif	quranic		الأَلِف الخَنْجَرِيَّة	alif_mahdhufah,small_alef,small_alif,superscript_alif			omitted_alif
 dammah	Dammah	quranic		الضَّمَّة				
 disputed	Disputed	standard		مُخْتَلَف فِيه	mukhtalaf_fih,revelation_disputed			
 division_mark	Division Mark	quranic		عَلَامَة التَّقْسِيم	hizb_mark,juz_mark,rub_el_hizb_mark,rub_mark			alamat_al_tahzib
@@ -60,7 +61,7 @@ khatmah	Khatmah	quranic		الخَتْمَة
 layout	Layout	borrowed		التَّخْطِيط				
 lemma	Lemma	borrowed						
 letter	Letter	borrowed		الحَرْف	harf			
-letter_relation	Letter Relation	quranic		عَلَاقَة الحَرْفَيْن	alaqat_al_huruf,ilaqat_al_harfayn	relation_of_two_letters		
+letter_relation	Letter Relation	quranic		التَّجَاوُر	alaqat_al_huruf,ilaqat_al_harfayn	relation_of_two_letters		
 letter_timing	Letter Timing	standard						
 line	Line	borrowed		السَّطْر				
 madani	Madani	quranic		مَدَنِيّ	madinan	medinan		
@@ -97,7 +98,6 @@ mutamathilan	Mutamathilan	quranic		المُتَمَاثِلَان	mutamathilain,
 mutashabihat	Mutashabihat	quranic		المُتَشَابِهَات	mutashabih,mutashabihat_lafziyyah,similar_ayahs	similar_passages		
 noon_sakinah	Noon Sakinah	quranic		النُّون السَّاكِنَة	nun_sakinah,noon_saakinah	unvowelled_noon		
 noun	Noun	borrowed		الاِسْم				
-omitted_alif	Omitted Alif	quranic		الأَلِف المَحْذُوفَة	alif_mahdhufah,dagger_alif,small_alef,small_alif,superscript_alif			
 orthographic_mark	Orthographic Mark	quranic		العَلَامَة الإِمْلَائِيَّة				
 page	Page	borrowed		الصَّفْحَة	safhah			
 part_of_speech	Part of Speech	borrowed		قِسْم الكَلِمَة	pos			
@@ -140,7 +140,7 @@ silat_meem_al_jama	Silat Meem al-Jama	quranic		صِلَة مِيم الجَمْ�
 small_meem	Small Meem	quranic		المِيم الصَّغِيرَة	iqlab_meem,meem_iqlab,meem_saghirah,mim_saghirah			
 small_noon	Small Noon	quranic		النُّون الصَّغِيرَة	noon_saghirah,nun_saghirah			
 small_waw	Small Waw	quranic		الوَاو الصَّغِيرَة	waw_saghirah			
-small_yaa	Small Yaa	quranic		اليَاء الصَّغِيرَة	small_ya,ya_saghirah,yaa_saghirah			
+small_yaa	Small Yaa	quranic		اليَاء الفَارِسِيَّة	small_ya,ya_saghirah,yaa_saghirah			
 spoken_translation	Spoken Translation	standard		التَّرْجَمَة المَنْطُوقَة	audio_translation			
 stem	Stem	borrowed		الجِذْع				
 sukun	Sukun	quranic		السُّكُون				
