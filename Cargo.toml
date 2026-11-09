@@ -1,0 +1,18 @@
+[package]
+name = "quranic-terminology-lint"
+version = "0.5.0"
+edition = "2021"
+description = "Offline checks for software that handles the Quran: its data against the Marqoom registries, and its names against the naming standard"
+license = "MIT"
+repository = "https://github.com/marqoom-specs/quranic-terminology-lint"
+readme = "README.md"
+include = ["Cargo.toml", "Cargo.lock", "README.md", "LICENSE", "src/**/*.rs", "registries/*.tsv", "terms/*.tsv"]
+
+[dependencies]
+regex = { version = "1", default-features = false, features = ["std", "unicode", "perf"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+unicode-normalization = "0.1"
+
+[profile.release]
+lto = true
+codegen-units = 1

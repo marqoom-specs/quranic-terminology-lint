@@ -1,0 +1,152 @@
+# The names of the 114 surahs.
+#
+# WHY A REGISTRY
+# `surah` is the concept, and it has one dictionary entry saying what a surah
+# is. These are its 114 members. A member is not a concept, so it does not get
+# an entry — it gets a row, the way the twenty-eight letter names do.
+#
+# THESE NAMES ARE DERIVED
+# Unlike the reciters in registries/qiraat.tsv, a surah name is a word, not a
+# person. The derivation in tools/translit.py keeps its meaning, so `code` is
+# derived from `arabic` by sections 4 to 8 and tools/check_registries.py
+# re-derives every row. Four names are the exception, and they are exceptions
+# for a stated reason: Taha, Yasin, Saad and Qaaf are named by the letters they
+# open with, and the derivation reads those letters as a consonant cluster —
+# `th`, `ys`, `s`, `q`, and `s` collides with the letter seen. They are written
+# as they are said, like every other letter name, and the rows that do it are
+# in data/established_spellings.tsv rather than hidden here.
+#
+# `display` follows the dictionary's convention and drops the leading article:
+# `Fatihah`, not `Al-Fatihah`. The article-carrying form every reader also
+# writes is in `alternative_spellings`, so both resolve to the same surah.
+#
+# THE OTHER NAMES ARE NAMES, NOT TRIVIA
+# A surah is often known by more than one name — al-Tawbah is also Baraah, and
+# al-Isra is also Bani Israil. `other_arabic_names` carries them because an
+# application that only knows one of them cannot find a text that uses the
+# other. It is not a complete list of every name a surah has ever been given.
+#
+# NOT HERE: whether a surah is Makki or Madani, and how many ayahs it has. The
+# first is disputed for a good number of surahs and needs its own sourcing; the
+# second is not one number but six, and belongs with registries/
+# ayah_numbering.tsv when the per-surah counts are extracted. Neither is
+# guessed at here.
+#
+# `ref` cites al-Itqan, al-Nawa al-Sabi Ashar, on the names of the Quran and of
+# its surahs, as volume/page.
+#
+# number	code	arabic	display	other_arabic_names	alternative_spellings	ref
+1	fatihah	الفَاتِحَة	Fatihah	أُمّ الكِتَاب,أُمّ القُرْآن,السَّبْع المَثَانِي,الحَمْد	al_fatiha,al_fatihah,fatiha,the_opening,umm_al_kitab	itqan 1/178
+2	baqarah	البَقَرَة	Baqarah		al_baqara,al_baqarah,baqara,the_cow	itqan 1/178
+3	aal_imran	آل عِمْرَان	Aal Imran		aali_imran,al_imran,ali_imran,family_of_imran	itqan 1/178
+4	nisa	النِّسَاء	Nisa		al_nisa	itqan 1/178
+5	maidah	المَائِدَة	Maidah		al_maidah	itqan 1/178
+6	anam	الأَنْعَام	Anam		al_anam	itqan 1/178
+7	araf	الأَعْرَاف	Araf		al_araf	itqan 1/178
+8	anfal	الأَنْفَال	Anfal		al_anfal	itqan 1/178
+9	tawbah	التَّوْبَة	Tawbah	بَرَاءَة,الفَاضِحَة	al_tawbah,at_tawba,baraah,tawba	itqan 1/178
+10	yunus	يُونُس	Yunus			itqan 1/178
+11	hud	هُود	Hud			itqan 1/178
+12	yusuf	يُوسُف	Yusuf			itqan 1/178
+13	rad	الرَّعْد	Rad		al_rad	itqan 1/178
+14	ibrahim	إِبْرَاهِيم	Ibrahim			itqan 1/178
+15	hijr	الحِجْر	Hijr		al_hijr	itqan 1/178
+16	nahl	النَّحْل	Nahl		al_nahl	itqan 1/178
+17	isra	الإِسْرَاء	Isra	بَنِي إِسْرَائِيل,سُبْحَان	al_isra,bani_israil,subhan	itqan 1/178
+18	kahf	الكَهْف	Kahf		al_kahf	itqan 1/178
+19	maryam	مَرْيَم	Maryam			itqan 1/178
+20	taha	طه	Taha		ta_ha,taa_haa	itqan 1/178
+21	anbiya	الأَنْبِيَاء	Anbiya		al_anbiya	itqan 1/178
+22	hajj	الحَجّ	Hajj		al_hajj	itqan 1/178
+23	muminun	المُؤْمِنُون	Muminun		al_muminun	itqan 1/178
+24	nur	النُّور	Nur		al_nur	itqan 1/178
+25	furqan	الفُرْقَان	Furqan		al_furqan	itqan 1/178
+26	shuara	الشُّعَرَاء	Shuara		al_shuara	itqan 1/178
+27	naml	النَّمْل	Naml		al_naml	itqan 1/178
+28	qasas	القَصَص	Qasas		al_qasas	itqan 1/178
+29	ankabut	العَنْكَبُوت	Ankabut		al_ankabut	itqan 1/178
+30	rum	الرُّوم	Rum		al_rum	itqan 1/178
+31	luqman	لُقْمَان	Luqman			itqan 1/178
+32	sajdah	السَّجْدَة	Sajdah	تَنْزِيل,المَضَاجِع	al_sajdah	itqan 1/178
+33	ahzab	الأَحْزَاب	Ahzab		al_ahzab	itqan 1/178
+34	saba	سَبَأ	Saba			itqan 1/178
+35	fatir	فَاطِر	Fatir	المَلَائِكَة		itqan 1/178
+36	yasin	يس	Yasin		ya_seen,ya_sin,yaseen	itqan 1/178
+37	saffat	الصَّافَّات	Saffat		al_saffat	itqan 1/178
+38	saad	ص	Saad		saad_surah,sad	itqan 1/178
+39	zumar	الزُّمَر	Zumar		al_zumar	itqan 1/178
+40	ghafir	غَافِر	Ghafir	المُؤْمِن,الطَّوْل	al_mumin,mumin	itqan 1/178
+41	fussilat	فُصِّلَت	Fussilat	حم السَّجْدَة	fussilat_ha_mim,ha_mim_al_sajdah	itqan 1/178
+42	shura	الشُّورَى	Shura		al_shura	itqan 1/178
+43	zukhruf	الزُّخْرُف	Zukhruf		al_zukhruf	itqan 1/178
+44	dukhan	الدُّخَان	Dukhan		al_dukhan	itqan 1/178
+45	jathiyah	الجَاثِيَة	Jathiyah		al_jathiyah	itqan 1/178
+46	ahqaf	الأَحْقَاف	Ahqaf		al_ahqaf	itqan 1/178
+47	muhammad	مُحَمَّد	Muhammad	القِتَال		itqan 1/178
+48	fath	الفَتْح	Fath		al_fath	itqan 1/178
+49	hujurat	الحُجُرَات	Hujurat		al_hujurat	itqan 1/178
+50	qaaf	ق	Qaaf		qaf	itqan 1/178
+51	dhariyat	الذَّارِيَات	Dhariyat		al_dhariyat	itqan 1/178
+52	tur	الطُّور	Tur		al_tur	itqan 1/178
+53	najm	النَّجْم	Najm		al_najm	itqan 1/178
+54	qamar	القَمَر	Qamar		al_qamar	itqan 1/178
+55	rahman	الرَّحْمَن	Rahman		al_rahman	itqan 1/178
+56	waqiah	الوَاقِعَة	Waqiah		al_waqiah	itqan 1/178
+57	hadid	الحَدِيد	Hadid		al_hadid	itqan 1/178
+58	mujadilah	المُجَادِلَة	Mujadilah		al_mujadilah	itqan 1/178
+59	hashr	الحَشْر	Hashr	بَنِي النَّضِير	al_hashr	itqan 1/178
+60	mumtahinah	المُمْتَحِنَة	Mumtahinah		al_mumtahinah	itqan 1/178
+61	saff	الصَّفّ	Saff		al_saff	itqan 1/178
+62	jumuah	الجُمُعَة	Jumuah		al_jumuah	itqan 1/178
+63	munafiqun	المُنَافِقُون	Munafiqun		al_munafiqun	itqan 1/178
+64	taghabun	التَّغَابُن	Taghabun		al_taghabun	itqan 1/178
+65	talaq	الطَّلَاق	Talaq		al_talaq	itqan 1/178
+66	tahrim	التَّحْرِيم	Tahrim		al_tahrim	itqan 1/178
+67	mulk	المُلْك	Mulk	تَبَارَك,المُنْجِيَة	al_mulk	itqan 1/178
+68	qalam	القَلَم	Qalam	ن	al_qalam	itqan 1/178
+69	haqqah	الحَاقَّة	Haqqah		al_haqqah	itqan 1/178
+70	maarij	المَعَارِج	Maarij	سَأَلَ سَائِل	al_maarij	itqan 1/178
+71	nuh	نُوح	Nuh			itqan 1/178
+72	jinn	الجِنّ	Jinn		al_jinn	itqan 1/178
+73	muzzammil	المُزَّمِّل	Muzzammil		al_muzzammil	itqan 1/178
+74	muddaththir	المُدَّثِّر	Muddaththir		al_muddaththir	itqan 1/178
+75	qiyamah	القِيَامَة	Qiyamah		al_qiyamah	itqan 1/178
+76	insan	الإِنْسَان	Insan	الدَّهْر,هَلْ أَتَى	al_insan,dahr,hal_ata	itqan 1/178
+77	mursalat	المُرْسَلَات	Mursalat		al_mursalat	itqan 1/178
+78	naba	النَّبَأ	Naba	عَمّ,التَّسَاؤُل	al_naba	itqan 1/178
+79	naziat	النَّازِعَات	Naziat		al_naziat	itqan 1/178
+80	abas	عَبَس	Abas			itqan 1/178
+81	takwir	التَّكْوِير	Takwir	كُوِّرَت	al_takwir	itqan 1/178
+82	infitar	الاِنْفِطَار	Infitar		al_infitar	itqan 1/178
+83	mutaffifin	المُطَفِّفِين	Mutaffifin		al_mutaffifin	itqan 1/178
+84	inshiqaq	الاِنْشِقَاق	Inshiqaq		al_inshiqaq	itqan 1/178
+85	buruj	البُرُوج	Buruj		al_buruj	itqan 1/178
+86	tariq	الطَّارِق	Tariq		al_tariq,at_tariq	itqan 1/178
+87	ala	الأَعْلَى	Ala		al_ala	itqan 1/178
+88	ghashiyah	الغَاشِيَة	Ghashiyah		al_ghashiyah	itqan 1/178
+89	fajr	الفَجْر	Fajr		al_fajr	itqan 1/178
+90	balad	البَلَد	Balad		al_balad	itqan 1/178
+91	shams	الشَّمْس	Shams		al_shams	itqan 1/178
+92	layl	اللَّيْل	Layl		al_layl	itqan 1/178
+93	duha	الضُّحَى	Duha		al_duha	itqan 1/178
+94	sharh	الشَّرْح	Sharh	الانْشِرَاح,أَلَمْ نَشْرَح	al_sharh,alam_nashrah,inshirah	itqan 1/178
+95	tin	التِّين	Tin		al_tin	itqan 1/178
+96	alaq	العَلَق	Alaq		al_alaq	itqan 1/178
+97	qadr	القَدْر	Qadr		al_qadr	itqan 1/178
+98	bayyinah	البَيِّنَة	Bayyinah		al_bayyinah	itqan 1/178
+99	zalzalah	الزَّلْزَلَة	Zalzalah	إِذَا زُلْزِلَت	al_zalzalah	itqan 1/178
+100	adiyat	العَادِيَات	Adiyat		al_adiyat	itqan 1/178
+101	qariah	القَارِعَة	Qariah		al_qariah	itqan 1/178
+102	takathur	التَّكَاثُر	Takathur	أَلْهَاكُم	al_takathur	itqan 1/178
+103	asr	العَصْر	Asr		al_asr	itqan 1/178
+104	humazah	الهُمَزَة	Humazah	الحُطَمَة	al_humazah	itqan 1/178
+105	fil	الفِيل	Fil		al_fil,elephant	itqan 1/178
+106	quraysh	قُرَيْش	Quraysh			itqan 1/178
+107	maun	المَاعُون	Maun	أَرَأَيْت,الدِّين	al_maun	itqan 1/178
+108	kawthar	الكَوْثَر	Kawthar	النَّحْر	al_kawthar	itqan 1/178
+109	kafirun	الكَافِرُون	Kafirun		al_kafirun	itqan 1/178
+110	nasr	النَّصْر	Nasr	التَّوْدِيع	al_nasr	itqan 1/178
+111	masad	المَسَد	Masad	اللَّهَب,تَبَّت	abi_lahab,al_lahab,al_masad,lahab	itqan 1/178
+112	ikhlas	الإِخْلَاص	Ikhlas	التَّوْحِيد	al_ikhlas,tawhid	itqan 1/178
+113	falaq	الفَلَق	Falaq		al_falaq	itqan 1/178
+114	nas	النَّاس	Nas		al_nas	itqan 1/178

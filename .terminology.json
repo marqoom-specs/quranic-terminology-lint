@@ -1,7 +1,6 @@
 {
-  "paths": ["src/quranic_terminology_lint"],
-  "exclude": ["src/quranic_terminology_lint/terms/**", "src/quranic_terminology_lint/rules.py", "tests/**", "examples/failing/**"],
-  "ignore_words": ["parts"],
-  "external_names": ["token\\.type"],
-  "_comment": "The term files, the rule definitions and deliberate test violations contain wrong names on purpose. parts means path components here, not juz. token.type is Python's tokenizer API."
+  "paths": ["src"],
+  "exclude": ["src/names/check.rs", "src/names/terms.rs", "src/names/words.rs", "src/data/detect.rs", "src/data/registry.rs", "src/data/text.rs", "src/data/values.rs"],
+  "external_names": ["registries: qiraat"],
+  "_comment": "These modules hold wrong names on purpose: the spelling rules run backwards, the data check's detection vocabulary, and the tests of both. `qiraat` is the name of the standard's registry."
 }
