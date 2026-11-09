@@ -6,6 +6,8 @@
   files: \.(json|geojson|csv|tsv|sql)$
   pass_filenames: true
   require_serial: true
+  # Most findings about data are warnings, which don't fail the hook; show them anyway.
+  verbose: true
   minimum_pre_commit_version: '3.2.0'
   stages: [pre-commit, pre-merge-commit, pre-push, manual]
 - id: quranic-terminology

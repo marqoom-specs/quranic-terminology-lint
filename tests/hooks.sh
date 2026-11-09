@@ -92,6 +92,11 @@ echo '{"surah": 2, "riwayah": "hafs_an_asim", "ayahs": [{"ayah": 1, "text": "x"}
 git add .
 expect 0 "$pre_commit" install
 expect 0 git commit -m Clean
+# A warning doesn't stop the commit, but it is shown.
+python3 -c 'import json; print(json.dumps({"surah": 2, "ayahs": [{"ayah": a} for a in range(1, 286)]}))' > al-baqarah.json
+git add .
+expect 0 git commit -m "Warned"
+[[ $out == *"ayah numbers that are not Kufi"* ]] || fail "the warning wasn't shown: $out"
 echo '{"riwaya": "hafsh"}' > export.json
 git add .
 expect 1 git commit -m Rejected
