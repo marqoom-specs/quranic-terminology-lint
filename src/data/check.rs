@@ -63,6 +63,7 @@ struct FileCheck<'a, 'b> {
 struct Stated {
     riwayah: Option<String>,
     numbering: Option<String>,
+    segmentation: Option<String>,
     /// A riwayah the data names that does not resolve to a code.
     unresolved: Option<String>,
     /// Fields holding ayah or word keys: field → (word keys, ayah keys, an example).
@@ -115,7 +116,7 @@ impl<'a, 'b> FileCheck<'a, 'b> {
         for (key, (words, ayahs, example)) in refs {
             let line = line_of(self.text, &format!("\"{example}\""));
             let decl = self.ctx.cfg.declaration(self.rel).cloned().unwrap_or_default();
-            if words >= 3 && decl.segmentation.is_none() {
+            if words >= 3 && stated.segmentation.is_none() && decl.segmentation.is_none() {
                 let numbering = match (&stated.numbering, &stated.riwayah) {
                     (Some(n), _) => format!("; the numbering is stated (`{n}`)"),
                     (None, Some(r)) => format!("; the riwayah is stated (`{r}`)"),
@@ -151,6 +152,9 @@ impl<'a, 'b> FileCheck<'a, 'b> {
                             let e = stated.refs.entry(k.clone()).or_insert((0, 0, s.clone()));
                             if kind == 3 { e.0 += 1 } else { e.1 += 1 }
                         }
+                    }
+                    if k == "word_segmentation" && depth <= 3 && stated.segmentation.is_none() {
+                        stated.segmentation = child.as_str().map(String::from);
                     }
                     if let Some(concept) = concept_of_key(k, parent) {
                         // A single value states something; a list only names options.
@@ -463,7 +467,7 @@ impl<'a, 'b> FileCheck<'a, 'b> {
         // The basmalah inside an ayah's text moves every word position after it.
         if let Some(first) = d.texts.get(&1).and_then(|t| t.first()) {
             if basmalah(first) == Some(true) {
-                let sev = if decl.segmentation.is_some() { Severity::Note } else { Severity::Warning };
+                let sev = if stated_in_data.segmentation.is_some() || decl.segmentation.is_some() { Severity::Note } else { Severity::Warning };
                 let f = self.finding(sev, Group::Meaning, "basmalah-attached", &at, line_of(self.text, first.split(' ').next().unwrap_or("")),
                     "1:1 begins with the basmalah and continues into the ayah; word positions in 1:1 are 4 higher than in data where the basmalah stands apart or is not counted".into(),
                     Some("state the word segmentation (data.files.<file>.word_segmentation), or keep the basmalah separate".into()), "rules 071, 072; dictionary: basmalah");

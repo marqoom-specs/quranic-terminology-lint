@@ -46,3 +46,36 @@ fn paths_are_shown_from_where_the_check_runs() {
     assert!(out.contains("surah 2 has 285 ayahs here"), "{out}");
     let _ = std::fs::remove_dir_all(&dir);
 }
+
+#[test]
+fn a_published_file_is_judged_by_the_segmentation_it_states() {
+    let dir = std::env::temp_dir().join(format!("quranic-data-segmentation-{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&dir);
+    std::fs::create_dir_all(&dir).unwrap();
+    std::fs::write(dir.join(".terminology.json"), r#"{"data": {"publishes": ["*.json"]}}"#).unwrap();
+    let fatihah = [
+        "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ",
+        "ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ",
+        "مَـٰلِكِ يَوْمِ ٱلدِّينِ",
+        "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+        "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
+        "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ",
+        "غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ",
+    ];
+    let severity = |doc: serde_json::Value| {
+        std::fs::write(dir.join("warsh.json"), doc.to_string()).unwrap();
+        let o = Command::new(BIN).args(["--format", "json", "warsh.json"]).current_dir(&dir).output().unwrap();
+        let result: serde_json::Value = serde_json::from_slice(&o.stdout).unwrap();
+        let finding = result["findings"].as_array().unwrap().iter().find(|f| f["code"] == "basmalah-attached").cloned();
+        finding.map(|f| f["severity"].as_str().unwrap().to_string())
+    };
+    let stated = severity(serde_json::json!({
+        "riwayah": "warsh_an_nafi",
+        "word_segmentation": "KFGQPC Warsh text split on spaces; the basmalah is joined to 1:1",
+        "text": {"1": fatihah},
+    }));
+    let unstated = severity(serde_json::json!({"riwayah": "warsh_an_nafi", "text": {"1": fatihah}}));
+    let _ = std::fs::remove_dir_all(&dir);
+    assert_eq!(stated.as_deref(), Some("note"));
+    assert_eq!(unstated.as_deref(), Some("warning"));
+}
